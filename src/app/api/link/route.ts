@@ -18,7 +18,9 @@ export async function GET(req: Request) {
   );
   const description = descriptionMath ? descriptionMath[1] : "";
 
-  const imageMatch = res.data.math(/<meta property="og:image" content="(.*?)"/);
+  const imageMatch = res.data.match(
+    /<meta property="og:image" content="(.*?)"/
+  );
   const imageUrl = imageMatch ? imageMatch[1] : "";
 
   return new Response(
