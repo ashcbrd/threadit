@@ -1,6 +1,9 @@
+"use client";
+
 import { formatTimeToNow } from "@/lib/utils";
-import { Post, Vote, User } from "@prisma/client";
+import { Post, User, Vote } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
+import Link from "next/link";
 import { FC, useRef } from "react";
 import EditorOutput from "./EditorOutput";
 import PostVoteClient from "./post-vote/PostVoteClient";
@@ -8,32 +11,32 @@ import PostVoteClient from "./post-vote/PostVoteClient";
 type PartialVote = Pick<Vote, "type">;
 
 interface PostProps {
-  subthreaditName: string;
   post: Post & {
     author: User;
-    vote: Vote[];
+    votes: Vote[];
   };
-  commentAmt: number;
   votesAmt: number;
+  subthreaditName: string;
   currentVote?: PartialVote;
+  commentAmt: number;
 }
 
 const Post: FC<PostProps> = ({
-  subthreaditName,
   post,
+  votesAmt: _votesAmt,
+  currentVote: _currentVote,
+  subthreaditName,
   commentAmt,
-  votesAmt,
-  currentVote,
 }) => {
-  const pRef = useRef<HTMLDivElement>(null);
+  const pRef = useRef<HTMLParagraphElement>(null);
 
   return (
     <div className="rounded-md bg-white shadow">
       <div className="px-6 py-4 flex justify-between">
         <PostVoteClient
           postId={post.id}
-          initialVote={currentVote?.type}
-          initialVotesAmt={votesAmt}
+          initialVotesAmt={_votesAmt}
+          initialVote={_currentVote?.type}
         />
 
         <div className="w-0 flex-1">
@@ -44,15 +47,14 @@ const Post: FC<PostProps> = ({
                   className="underline text-zinc-900 text-sm underline-offset-2"
                   href={`/t/${subthreaditName}`}
                 >
-                  t/{subthreaditName}
+                  r/{subthreaditName}
                 </a>
                 <span className="px-1">•</span>
               </>
             ) : null}
-            <span>Posted by u/{post.author.name}</span>{" "}
+            <span>Posted by u/{post.author.username}</span>{" "}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
-
           <a href={`/t/${subthreaditName}/post/${post.id}`}>
             <h1 className="text-lg font-semibold py-2 leading-6 text-gray-900">
               {post.title}
@@ -65,22 +67,22 @@ const Post: FC<PostProps> = ({
           >
             <EditorOutput content={post.content} />
             {pRef.current?.clientHeight === 160 ? (
-              <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-white to-transparent" />
+              // blur bottom if content is too long
+              <div className="absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-white to-transparent"></div>
             ) : null}
           </div>
         </div>
       </div>
 
-      <div className="bg-gray-50 z-20 text-sm p-4 sm:px-6">
-        <a
-          className="w-fit flex items-center gap-2"
+      <div className="bg-gray-50 z-20 text-sm px-4 py-4 sm:px-6">
+        <Link
           href={`/t/${subthreaditName}/post/${post.id}`}
+          className="w-fit flex items-center gap-2"
         >
           <MessageSquare className="h-4 w-4" /> {commentAmt} comments
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
-
 export default Post;
