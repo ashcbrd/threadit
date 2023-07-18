@@ -16,6 +16,7 @@ specifiers:
   '@next-auth/prisma-adapter': ^1.0.6
   '@prisma/client': ^4.14.1
   '@radix-ui/react-avatar': ^1.0.3
+  '@radix-ui/react-dialog': ^1.0.4
   '@radix-ui/react-dropdown-menu': ^2.0.5
   '@radix-ui/react-label': ^2.0.2
   '@radix-ui/react-slot': ^1.0.2
@@ -76,6 +77,7 @@ dependencies:
   '@next-auth/prisma-adapter': 1.0.7_arcl7aimwkiosoj4hoyzp3g5om
   '@prisma/client': 4.16.2_prisma@4.16.2
   '@radix-ui/react-avatar': 1.0.3_h73yytdk5ntplvft5jzh7k37ce
+  '@radix-ui/react-dialog': 1.0.4_h73yytdk5ntplvft5jzh7k37ce
   '@radix-ui/react-dropdown-menu': 2.0.5_h73yytdk5ntplvft5jzh7k37ce
   '@radix-ui/react-label': 2.0.2_h73yytdk5ntplvft5jzh7k37ce
   '@radix-ui/react-slot': 1.0.2_bfoz4c5kom3f237nig75ykjhhy
@@ -651,6 +653,40 @@ packages:
       react-remove-scroll: 2.5.4_bfoz4c5kom3f237nig75ykjhhy
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@radix-ui/react-dialog/1.0.4_h73yytdk5ntplvft5jzh7k37ce:
+    resolution: {integrity: sha512-hJtRy/jPULGQZceSAP2Re6/4NpKo8im6V8P2hUqZsdFiSL8l35kYsw3qbRI6Ay5mQd2+wlLqje770eq+RJ3yZg==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.6
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-compose-refs': 1.0.1_bfoz4c5kom3f237nig75ykjhhy
+      '@radix-ui/react-context': 1.0.1_bfoz4c5kom3f237nig75ykjhhy
+      '@radix-ui/react-dismissable-layer': 1.0.4_h73yytdk5ntplvft5jzh7k37ce
+      '@radix-ui/react-focus-guards': 1.0.1_bfoz4c5kom3f237nig75ykjhhy
+      '@radix-ui/react-focus-scope': 1.0.3_h73yytdk5ntplvft5jzh7k37ce
+      '@radix-ui/react-id': 1.0.1_bfoz4c5kom3f237nig75ykjhhy
+      '@radix-ui/react-portal': 1.0.3_h73yytdk5ntplvft5jzh7k37ce
+      '@radix-ui/react-presence': 1.0.1_h73yytdk5ntplvft5jzh7k37ce
+      '@radix-ui/react-primitive': 1.0.3_h73yytdk5ntplvft5jzh7k37ce
+      '@radix-ui/react-slot': 1.0.2_bfoz4c5kom3f237nig75ykjhhy
+      '@radix-ui/react-use-controllable-state': 1.0.1_bfoz4c5kom3f237nig75ykjhhy
+      '@types/react': 18.2.7
+      '@types/react-dom': 18.2.4
+      aria-hidden: 1.2.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-remove-scroll: 2.5.5_bfoz4c5kom3f237nig75ykjhhy
     dev: false
 
   /@radix-ui/react-direction/1.0.1_bfoz4c5kom3f237nig75ykjhhy:

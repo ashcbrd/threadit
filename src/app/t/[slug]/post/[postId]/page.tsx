@@ -11,7 +11,7 @@ import { ArrowBigDown, ArrowBigUp, Loader2 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-interface PageProps {
+interface SubthreaditPostPageProps {
   params: {
     postId: string;
   };
@@ -20,7 +20,7 @@ interface PageProps {
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
-const page = async ({ params }: PageProps) => {
+const SubthreaditPostPage = async ({ params }: SubthreaditPostPageProps) => {
   const cachedPost = (await redis.hgetall(
     `post:${params.postId}`
   )) as CachedPost;
@@ -71,13 +71,12 @@ const page = async ({ params }: PageProps) => {
           </h1>
 
           <EditorOutput content={post?.content ?? cachedPost.content} />
-
           <Suspense
             fallback={
               <Loader2 className="h-5 w-5 animate-spin text-zinc-500" />
             }
           >
-            {/* @ts-expect-error server component */}
+            {/* @ts-expect-error Server Component */}
             <CommentsSection postId={post?.id ?? cachedPost.id} />
           </Suspense>
         </div>
@@ -89,19 +88,22 @@ const page = async ({ params }: PageProps) => {
 function PostVoteShell() {
   return (
     <div className="flex items-center flex-col pr-6 w-20">
+      {/* upvote */}
       <div className={buttonVariants({ variant: "ghost" })}>
-        <ArrowBigUp className="g-5 w-5 text-zinc-700" />
+        <ArrowBigUp className="h-5 w-5 text-zinc-700" />
       </div>
 
+      {/* score */}
       <div className="text-center py-2 font-medium text-sm text-zinc-900">
         <Loader2 className="h-3 w-3 animate-spin" />
       </div>
 
+      {/* downvote */}
       <div className={buttonVariants({ variant: "ghost" })}>
-        <ArrowBigDown className="g-5 w-5 text-zinc-700" />
+        <ArrowBigDown className="h-5 w-5 text-zinc-700" />
       </div>
     </div>
   );
 }
 
-export default page;
+export default SubthreaditPostPage;
