@@ -4,8 +4,6 @@
 
 Made by: <a href="https://asther.vercel.app">Asther Louie Cabardo</a>
 
-## Instructions
-
 1.  Fork this repository and clone your fork:
 
     ```shell
