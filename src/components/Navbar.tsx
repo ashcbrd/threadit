@@ -13,10 +13,7 @@ const Navbar = async () => {
       <div className="containter max-w-7xl h-full mx-auto flex items-center justify-between gap-2">
         <Link href="/" className="flex gap-2 items-center">
           {/* <Icons.logo className="h-8 w-8 sm:h-6 sm:w-6" /> */}
-          <p>LOGO</p>
-          <p className="hidded text-zinc-700 text-sm font-medium md:block">
-            Threadit
-          </p>
+          <p className="text-2xl font-black">THREADIT</p>
         </Link>
 
         {/* Search bar */}
